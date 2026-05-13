@@ -19,5 +19,13 @@
   },
   "devDependencies": {
     "nodemon": "^3.1.14"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gihanAD/Lab-Equpement.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gihanAD/Lab-Equpement/issues"
+  },
+  "homepage": "https://github.com/gihanAD/Lab-Equpement#readme"
 }
