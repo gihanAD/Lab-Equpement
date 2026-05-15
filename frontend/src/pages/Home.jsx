@@ -18,6 +18,35 @@ function Home() {
     })
     .catch(err => console.log(err));
 };
+const updateItem = (item) => {
+  const name = prompt("New name:", item.name);
+  const category = prompt("New category:", item.category);
+  const availableQuantity = prompt("New available quantity:", item.availableQuantity);
+
+  axios.put(`http://localhost:5000/api/equipment/${item._id}`, {
+    name,
+    category,
+    availableQuantity
+  })
+  .then(() => {
+    alert("Updated");
+    window.location.reload();
+  });
+};
+const borrowItem = (item) => {
+  if (item.availableQuantity <= 0) {
+    alert("No stock available");
+    return;
+  }
+
+  axios.put(`http://localhost:5000/api/equipment/${item._id}`, {
+    availableQuantity: item.availableQuantity - 1
+  })
+  .then(() => {
+    alert("Borrowed");
+    window.location.reload();
+  });
+};
 
   useEffect(() => {
     loadData();
@@ -38,7 +67,10 @@ function Home() {
           <p>Available: {item.availableQuantity}</p>
           <button onClick={() => deleteItem(item._id)}>
   Delete
+
 </button>
+  <button onClick={() => updateItem(item)}>Edit</button>
+<button onClick={() => borrowItem(item)}>Borrow</button>
         </div>
       ))}
     </div>
