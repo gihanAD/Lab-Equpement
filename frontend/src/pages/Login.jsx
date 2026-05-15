@@ -11,17 +11,31 @@ export default function Login() {
       localStorage.setItem("auth", "true");
       navigate("/dashboard");
     } else {
-      alert("Invalid credentials");
+      alert("Invalid Login");
     }
   };
 
   return (
-    <div className="auth-wrapper">
-      <div className="auth-card">
-        <div className="auth-title">🧪 Lab System</div>
-        <div className="auth-sub">Admin Portal Login</div>
+    <div className="authPage">
+
+      {/* LEFT SIDE */}
+      <div className="leftSide">
+        <h1>🧪 Lab Equipment</h1>
+        <p>
+          Modern Laboratory Equipment Borrowing & Management System
+        </p>
+
+        <div className="glowCircle"></div>
+      </div>
+
+      {/* LOGIN CARD */}
+      <div className="loginCard">
+
+        <h2>Welcome Back</h2>
+        <span>Sign in to continue</span>
 
         <input
+          type="text"
           placeholder="Username"
           onChange={(e) => setUsername(e.target.value)}
         />
@@ -32,10 +46,14 @@ export default function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button onClick={login}>Sign In</button>
+        <button onClick={login}>Login</button>
 
-        <div className="auth-hint">Default: admin / 1234</div>
+        <p className="defaultText">
+          Default : admin / 1234
+        </p>
+
       </div>
+
     </div>
   );
 }
